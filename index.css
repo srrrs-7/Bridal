@@ -1,0 +1,154 @@
+/***************************header***************************/
+header {
+  background-color: #f19730; /* 背景色（お好みで変更OK） */
+  padding: 10px 0;
+}
+
+/* ナビゲーションのリストを横並びに */
+nav ul {
+  display: flex;             /* 横並びにする */
+  justify-content: center;   /* 中央揃え */
+  list-style: none;          /* ・を消す */
+  margin: 0;
+  padding: 0;
+}
+
+/* 各リンク項目のスタイル */
+nav ul li {
+  margin: 0 15px;            /* 左右の間隔 */
+}
+
+/* リンクの見た目 */
+nav ul li a {
+  text-decoration: none;     /* 下線を消す */
+  color: #333;               /* 文字色 */
+  font-weight: bold;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+/* ホバー時の色変化 */
+nav ul li a:hover {
+  color: #0077cc;            /* ホバー時の色（青系） */
+}
+
+/***********************************************************/
+
+
+/**********************Wedding Profile**********************/
+#Wedding_Profile h1{
+  text-align: left; /*テキスト左揃え*/
+  font-family: 'Pacifico', cursive; /*筆記体*/
+  /*border-bottom: 2px dotted gray; /*灰色の点線*/
+  /*padding-bottom: 0.1px; 下線と文字の間に余白*/
+  /*margin-bottom: 15px; /*見出しの下の余白*/
+  font-size: 100; /*文字のサイズ*/
+}
+/***********************************************************/
+
+#greeting{
+  text-align: center; /*テキスト中央揃え*/
+}
+
+/**********************最初の三枚の写真**********************/
+#img_first {
+  display: flex; /*横並び指定*/
+  justify-content: center; /*中央揃え*/
+  flex-wrap: wrap; /*画像が横に並びきれない場合、折り返して次の行に表示*/
+  gap: 10px; /*画像同士の感覚の10px*/
+}
+#img_first img {
+  width: 100px; /*画像の横幅*/
+  height: auto; /*高さは自動調整*/
+  border-radius: 10px; /*画像の角の丸み*/
+}
+/***********************************************************/
+
+
+/***************************Profile***************************/
+    @media (max-width: 600px) {
+      #parent {
+        display: flex;
+        align-items: center;
+      }
+      #child1,
+      #child2 {
+        flex-grow: 1;
+        text-align: center;
+      }
+    }
+#Profile h1{
+  text-align: left; /*テキスト左揃え*/
+  font-family: 'Pacifico', cursive; /*筆記体*/
+  border-bottom: 2px dotted gray; /*灰色の点線*/
+  padding-bottom: 0.1px; /*下線と文字の間に余白*/
+  margin-bottom: 15px; /*見出しの下の余白*/
+  font-size: 100; /*文字のサイズ*/
+}
+#parent {
+  text-align: center;         /* テキストを中央揃え */
+  margin: 40px auto;          /* 上下に余白、左右は中央配置 */
+  max-width: 500px;           /* 最大幅を指定して読みやすく */
+  padding: 20px;              /* 内側の余白 */
+}
+#child1,
+#child2{
+  text-align: center;         /* テキストを中央揃え */
+} 
+/**************************************************************/
+
+
+/*************************Profile text*************************/
+#img_groom,
+#img_bride{
+  justify-content: center; /*中央揃え*/
+}
+/**************************************************************/
+
+
+/************************Profile photo************************/
+#img_groom img,
+#img_bride img {
+  width: 150px; /*画像の横幅*/
+  height: 150px; /*高さの縦幅*/
+  border-radius: 100px; /*画像の角の丸み*/
+}
+/**************************************************************/
+
+
+/**********************drink,food text**********************/
+#drink, 
+#food {
+  text-align: center;         /* テキストを中央揃え */
+  margin: 40px auto;          /* 上下に余白、左右は中央配置 */
+  max-width: 500px;           /* 最大幅を指定して読みやすく */
+  padding: 20px;              /* 内側の余白 */
+/*  background-color: #f9f9f9;  背景色（任意） */
+/*    border-radius: 10px;        /* 角を丸く（任意） */
+/*    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 影をつけて浮かせる感じに（任意） */
+}
+/***********************************************************/
+
+
+/****************************title****************************/
+#drink h1,
+#food h1,
+#Guest_seat h1,
+#Photo_library h1{
+  text-align: left; /*テキスト左揃え*/
+  font-family: 'Pacifico', cursive; /*筆記体*/
+  border-bottom: 2px dotted gray; /*灰色の点線*/
+  padding-bottom: 0.1px; /*下線と文字の間に余白*/
+  margin-bottom: 15px; /*見出しの下の余白*/
+  font-size: 100; /*文字のサイズ*/
+}
+/***********************************************************/
+
+
+/***********************PhotoLibrary***********************/
+#img_PhotoLibrary img {
+  width: 150px; /*画像の横幅*/
+  height: auto; /*高さは自動調整*/
+  border-radius: 8px; /*画像の角の丸み*/
+}
+/***********************************************************/
