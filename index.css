@@ -115,6 +115,18 @@ nav ul li a:hover {
 }
 /**************************************************************/
 
+/**********************first_impression**********************/
+#first_impression1,
+#first_impression2,
+#first_impression3,
+#first_impression4,
+#first_impression5 {
+  border: 1px solid #666;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 4px;
+}
+/**************************************************************/
 
 /**********************drink,food text**********************/
 #drink, 
@@ -150,5 +162,16 @@ nav ul li a:hover {
   width: 150px; /*画像の横幅*/
   height: auto; /*高さは自動調整*/
   border-radius: 8px; /*画像の角の丸み*/
+}
+/***********************************************************/
+
+/**********************PhotoLibrary_sub**********************/
+#img_PhotoLibrary h3{
+  text-align: left; /*テキスト左揃え*/
+  font-family: 'Pacifico', cursive; /*筆記体*/
+  border-bottom: 2px dotted gray; /*灰色の点線*/
+  padding-bottom: 0.1px; /*下線と文字の間に余白*/
+  margin-bottom: 15px; /*見出しの下の余白*/
+  font-size: 100; /*文字のサイズ*/
 }
 /***********************************************************/
