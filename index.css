@@ -13,6 +13,7 @@
 body {
   margin-top: var(--header-height); /* ヘッダーの高さ分だけ上に余白を作る */
   padding: 0;
+  background-color: beige;
 }
 
 /***header***/
@@ -22,7 +23,7 @@ header {
   left: 0;
   width: 100%;
   z-index: 100;
-  background-color: #f19730; /* 背景色（お好みで変更OK） */
+  background-color: orange; /* 背景色（お好みで変更OK） */
   padding: 10px 0;
   height: var(--header-height);
 }
