@@ -1,3 +1,9 @@
+/***root variables***/
+:root {
+  --header-height: 50px;
+}
+
+/***global style***/
 * {
   margin: 0;
   padding: 0;
@@ -5,20 +11,27 @@
 }
 
 body {
-  margin: 0;
+  margin-top: var(--header-height); /* ヘッダーの高さ分だけ上に余白を作る */
   padding: 0;
 }
 
-/***************************header***************************/
+/***header***/
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
   background-color: #f19730; /* 背景色（お好みで変更OK） */
   padding: 10px 0;
+  height: var(--header-height);
 }
 
 /* ナビゲーションのリストを横並びに */
 nav ul {
   display: flex;             /* 横並びにする */
   justify-content: center;   /* 中央揃え */
+  align-items: center;     /* 縦方向も中央揃え */
   list-style: none;          /* ・を消す */
   margin: 0;
   padding: 0;
@@ -43,10 +56,7 @@ nav ul li a:hover {
   color: #0077cc;            /* ホバー時の色（青系） */
 }
 
-/***********************************************************/
-
-
-/**********************Wedding Profile**********************/
+/***Wedding Profile***/
 #wedding_profile h1{
   text-align: left; /*テキスト左揃え*/
   font-family: 'Pacifico', cursive; /*筆記体*/
@@ -55,13 +65,12 @@ nav ul li a:hover {
   /*margin-bottom: 15px; /*見出しの下の余白*/
   font-size: 100; /*文字のサイズ*/
 }
-/***********************************************************/
 
 #greeting{
   text-align: center; /*テキスト中央揃え*/
 }
 
-/**********************最初の三枚の写真**********************/
+/****最初の三枚の写真***/
 #img_first {
   display: flex; /*横並び指定*/
   justify-content: center; /*中央揃え*/
@@ -73,10 +82,8 @@ nav ul li a:hover {
   height: auto; /*高さは自動調整*/
   border-radius: 10px; /*画像の角の丸み*/
 }
-/***********************************************************/
 
-
-/***************************Profile***************************/
+/***Profile***/
 #profile {
   display: flex;
   align-items: center;
@@ -104,27 +111,24 @@ nav ul li a:hover {
 #child2{
   text-align: center;         /* テキストを中央揃え */
 } 
-/**************************************************************/
 
 
-/*************************Profile text*************************/
+/***Profile text***/
 #img_groom,
 #img_bride{
   justify-content: center; /*中央揃え*/
 }
-/**************************************************************/
 
 
-/************************Profile photo************************/
+/***Profile photo***/
 #img_groom img,
 #img_bride img {
   width: 150px; /*画像の横幅*/
   height: 150px; /*高さの縦幅*/
   border-radius: 100px; /*画像の角の丸み*/
 }
-/**************************************************************/
 
-/**********************first_impression**********************/
+/***first_impression***/
 #first_impression1,
 #first_impression2,
 #first_impression3,
@@ -135,23 +139,18 @@ nav ul li a:hover {
   margin: 12px 0;
   border-radius: 4px;
 }
-/**************************************************************/
 
-/**********************drink,food text**********************/
+/***drink,food text***/
 #drink, 
 #food {
   text-align: center;         /* テキストを中央揃え */
   margin: 40px auto;          /* 上下に余白、左右は中央配置 */
   max-width: 500px;           /* 最大幅を指定して読みやすく */
   padding: 20px;              /* 内側の余白 */
-/*  background-color: #f9f9f9;  背景色（任意） */
-/*    border-radius: 10px;        /* 角を丸く（任意） */
-/*    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* 影をつけて浮かせる感じに（任意） */
 }
-/***********************************************************/
 
 
-/****************************title****************************/
+/***title***/
 #drink h1,
 #food h1,
 #Guest_seat h1,
@@ -163,18 +162,16 @@ nav ul li a:hover {
   margin-bottom: 15px; /*見出しの下の余白*/
   font-size: 100; /*文字のサイズ*/
 }
-/***********************************************************/
 
 
-/***********************PhotoLibrary***********************/
+/***PhotoLibrary***/
 #img_PhotoLibrary img {
   width: 150px; /*画像の横幅*/
   height: auto; /*高さは自動調整*/
   border-radius: 8px; /*画像の角の丸み*/
 }
-/***********************************************************/
 
-/**********************PhotoLibrary_sub**********************/
+/***PhotoLibrary_sub***/
 #img_PhotoLibrary h3{
   text-align: left; /*テキスト左揃え*/
   font-family: 'Pacifico', cursive; /*筆記体*/
@@ -183,4 +180,3 @@ nav ul li a:hover {
   margin-bottom: 15px; /*見出しの下の余白*/
   font-size: 100; /*文字のサイズ*/
 }
-/***********************************************************/
