@@ -47,7 +47,7 @@ nav ul li a:hover {
 
 
 /**********************Wedding Profile**********************/
-#Wedding_Profile h1{
+#wedding_profile h1{
   text-align: left; /*テキスト左揃え*/
   font-family: 'Pacifico', cursive; /*筆記体*/
   /*border-bottom: 2px dotted gray; /*灰色の点線*/
@@ -77,12 +77,12 @@ nav ul li a:hover {
 
 
 /***************************Profile***************************/
-#parent {
+#profile {
   display: flex;
   align-items: center;
 }
-#child1,
-#child2 {
+#groom,
+#bride {
   flex-grow: 1;
   text-align: center;
 }
@@ -94,7 +94,7 @@ nav ul li a:hover {
   margin-bottom: 15px; /*見出しの下の余白*/
   font-size: 100; /*文字のサイズ*/
 }
-#parent {
+#profile {
   text-align: center;         /* テキストを中央揃え */
   margin: 40px auto;          /* 上下に余白、左右は中央配置 */
   max-width: 500px;           /* 最大幅を指定して読みやすく */
