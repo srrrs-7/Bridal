@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 /***************************header***************************/
 header {
   background-color: #f19730; /* 背景色（お好みで変更OK） */
@@ -66,17 +77,15 @@ nav ul li a:hover {
 
 
 /***************************Profile***************************/
-    @media (max-width: 600px) {
-      #parent {
-        display: flex;
-        align-items: center;
-      }
-      #child1,
-      #child2 {
-        flex-grow: 1;
-        text-align: center;
-      }
-    }
+#parent {
+  display: flex;
+  align-items: center;
+}
+#child1,
+#child2 {
+  flex-grow: 1;
+  text-align: center;
+}
 #Profile h1{
   text-align: left; /*テキスト左揃え*/
   font-family: 'Pacifico', cursive; /*筆記体*/
