@@ -1,183 +1,211 @@
 /***root variables***/
 :root {
-  --header-height: 50px;
+    --header-height: 40px;
 }
 
 /***global style***/
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin-top: var(--header-height); /* ヘッダーの高さ分だけ上に余白を作る */
-  padding: 0;
-  background-color: beige;
+    margin-top: var(--header-height); /* ヘッダーの高さ分だけ上に余白を作る */
+    padding: 0;
+    background-color: beige;
 }
 
 /***header***/
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 100;
-  background-color: orange; /* 背景色（お好みで変更OK） */
-  padding: 10px 0;
-  height: var(--header-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 80px 10px 80px;
+    z-index: 100;
+    background-color: orange;
+    height: var(--header-height);
 }
 
-/* ナビゲーションのリストを横並びに */
 nav ul {
-  display: flex;             /* 横並びにする */
-  justify-content: center;   /* 中央揃え */
-  align-items: center;     /* 縦方向も中央揃え */
-  list-style: none;          /* ・を消す */
-  margin: 0;
-  padding: 0;
-}
-
-/* 各リンク項目のスタイル */
-nav ul li {
-  margin: 0 15px;            /* 左右の間隔 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* リンクの見た目 */
 nav ul li a {
-  text-decoration: none;     /* 下線を消す */
-  color: #333;               /* 文字色 */
-  font-weight: bold;
-  font-size: 16px;
-  transition: color 0.3s;
-}
-
-/* ホバー時の色変化 */
-nav ul li a:hover {
-  color: #0077cc;            /* ホバー時の色（青系） */
+    text-decoration: none; /* 下線を消す */
+    color: #333; /* 文字色 */
+    font-weight: bold;
+    font-size: 16px;
+    transition: color 0.3s;
 }
 
 /***Wedding Profile***/
-#wedding_profile h1{
-  text-align: left; /*テキスト左揃え*/
-  font-family: 'Pacifico', cursive; /*筆記体*/
-  /*border-bottom: 2px dotted gray; /*灰色の点線*/
-  /*padding-bottom: 0.1px; 下線と文字の間に余白*/
-  /*margin-bottom: 15px; /*見出しの下の余白*/
-  font-size: 100; /*文字のサイズ*/
+#wedding_profile h1 {
+    text-align: left; /*テキスト左揃え*/
+    font-family: "Pacifico", cursive; /*筆記体*/
+    /*border-bottom: 2px dotted gray; /*灰色の点線*/
+    /*padding-bottom: 0.1px; 下線と文字の間に余白*/
+    /*margin-bottom: 15px; /*見出しの下の余白*/
+    font-size: 100; /*文字のサイズ*/
 }
 
-#greeting{
-  text-align: center; /*テキスト中央揃え*/
+#greeting {
+    text-align: center; /*テキスト中央揃え*/
 }
 
 /****最初の三枚の写真***/
 #img_first {
-  display: flex; /*横並び指定*/
-  justify-content: center; /*中央揃え*/
-  flex-wrap: wrap; /*画像が横に並びきれない場合、折り返して次の行に表示*/
-  gap: 10px; /*画像同士の感覚の10px*/
+    perspective: 700px;
 }
-#img_first img {
-  width: 100px; /*画像の横幅*/
-  height: auto; /*高さは自動調整*/
-  border-radius: 10px; /*画像の角の丸み*/
+#img_first_grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+
+    transform-style: preserve-3d;
+    animation: rotateLeft 20s linear infinite;
+}
+.item1,
+.item3 {
+    width: 100px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.item2 {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes rotateLeft {
+    from {
+        transform: rotateX(15deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(15deg) rotateY(-360deg);
+    }
+}
+
+.item1,
+.item2,
+.item3 {
+    animation: cancelRotation 20s linear infinite;
+}
+
+@keyframes cancelRotation {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
 }
 
 /***Profile***/
 #profile {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 #groom,
 #bride {
-  flex-grow: 1;
-  text-align: center;
+    flex-grow: 1;
+    text-align: center;
 }
-#Profile h1{
-  text-align: left; /*テキスト左揃え*/
-  font-family: 'Pacifico', cursive; /*筆記体*/
-  border-bottom: 2px dotted gray; /*灰色の点線*/
-  padding-bottom: 0.1px; /*下線と文字の間に余白*/
-  margin-bottom: 15px; /*見出しの下の余白*/
-  font-size: 100; /*文字のサイズ*/
+#Profile h1 {
+    text-align: left; /*テキスト左揃え*/
+    font-family: "Pacifico", cursive; /*筆記体*/
+    border-bottom: 2px dotted gray; /*灰色の点線*/
+    padding-bottom: 0.1px; /*下線と文字の間に余白*/
+    margin-bottom: 15px; /*見出しの下の余白*/
+    font-size: 100; /*文字のサイズ*/
 }
 #profile {
-  text-align: center;         /* テキストを中央揃え */
-  margin: 40px auto;          /* 上下に余白、左右は中央配置 */
-  max-width: 500px;           /* 最大幅を指定して読みやすく */
-  padding: 20px;              /* 内側の余白 */
+    text-align: center; /* テキストを中央揃え */
+    margin: 40px auto; /* 上下に余白、左右は中央配置 */
+    max-width: 500px; /* 最大幅を指定して読みやすく */
+    padding: 20px; /* 内側の余白 */
 }
 #child1,
-#child2{
-  text-align: center;         /* テキストを中央揃え */
-} 
-
+#child2 {
+    text-align: center; /* テキストを中央揃え */
+}
 
 /***Profile text***/
 #img_groom,
-#img_bride{
-  justify-content: center; /*中央揃え*/
+#img_bride {
+    justify-content: center; /*中央揃え*/
 }
-
 
 /***Profile photo***/
 #img_groom img,
 #img_bride img {
-  width: 150px; /*画像の横幅*/
-  height: 150px; /*高さの縦幅*/
-  border-radius: 100px; /*画像の角の丸み*/
+    width: 150px; /*画像の横幅*/
+    height: 150px; /*高さの縦幅*/
+    border-radius: 100px; /*画像の角の丸み*/
+    object-fit: cover;
+    object-position: center top;
+}
+
+#impression {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    justify-items: center;
+    align-items: center;
 }
 
 /***first_impression***/
-#first_impression1,
-#first_impression2,
-#first_impression3,
-#first_impression4,
-#first_impression5 {
-  border: 1px solid #666;
-  padding: 12px;
-  margin: 12px 0;
-  border-radius: 4px;
+#first_impression {
+    width: 180px;
+    height: 200px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
 }
-
-/***drink,food text***/
-#drink, 
-#food {
-  text-align: center;         /* テキストを中央揃え */
-  margin: 40px auto;          /* 上下に余白、左右は中央配置 */
-  max-width: 500px;           /* 最大幅を指定して読みやすく */
-  padding: 20px;              /* 内側の余白 */
-}
-
 
 /***title***/
-#drink h1,
-#food h1,
-#Guest_seat h1,
-#Photo_library h1{
-  text-align: left; /*テキスト左揃え*/
-  font-family: 'Pacifico', cursive; /*筆記体*/
-  border-bottom: 2px dotted gray; /*灰色の点線*/
-  padding-bottom: 0.1px; /*下線と文字の間に余白*/
-  margin-bottom: 15px; /*見出しの下の余白*/
-  font-size: 100; /*文字のサイズ*/
+#guest_seat h1 {
+    text-align: left; /*テキスト左揃え*/
+    font-family: "Pacifico", cursive; /*筆記体*/
+    border-bottom: 2px dotted gray; /*灰色の点線*/
+    padding-bottom: 0.1px; /*下線と文字の間に余白*/
+    margin-bottom: 15px; /*見出しの下の余白*/
+    font-size: 100; /*文字のサイズ*/
 }
 
+#photo h1 {
+    text-align: left; /*テキスト左揃え*/
+    font-family: "Pacifico", cursive; /*筆記体*/
+    border-bottom: 2px dotted gray; /*灰色の点線*/
+    padding-bottom: 0.1px; /*下線と文字の間に余白*/
+    margin-bottom: 15px; /*見出しの下の余白*/
+    font-size: 100; /*文字のサイズ*/
+}
+
+#img_photo_library {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
 
 /***PhotoLibrary***/
-#img_PhotoLibrary img {
-  width: 150px; /*画像の横幅*/
-  height: auto; /*高さは自動調整*/
-  border-radius: 8px; /*画像の角の丸み*/
-}
-
-/***PhotoLibrary_sub***/
-#img_PhotoLibrary h3{
-  text-align: left; /*テキスト左揃え*/
-  font-family: 'Pacifico', cursive; /*筆記体*/
-  border-bottom: 2px dotted gray; /*灰色の点線*/
-  padding-bottom: 0.1px; /*下線と文字の間に余白*/
-  margin-bottom: 15px; /*見出しの下の余白*/
-  font-size: 100; /*文字のサイズ*/
+#img_photo_library img {
+    width: 150px; /*画像の横幅*/
+    height: auto; /*高さは自動調整*/
+    border-radius: 10px; /*画像の角の丸み*/
 }

@@ -1,170 +1,181 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>bridal site</title>
+        <link rel="stylesheet" href="index.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+            rel="stylesheet"
+        />
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>bridal site</title>
-    <link rel="stylesheet" href="index.css">
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-</head>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#guest_seat">Guest seat</a></li>
+                <li><a href="#photo">Photo</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <nav>
-        <ul>
-            <li><a href="#profile">Profile</a></li>
-            <li><a href="#drink">Drink menu</a></li>
-            <li><a href="#food">Food menu</a></li>
-            <li><a href="#guest_seat">Guest seat</a></li>
-            <li><a href="#photo_library">Photo library</a></li>
-        </ul>
-    </nav>
-</header>
+    <!-- Sakura Petal Background -->
+    <style>
+        #sakura-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
 
-<!-- Sakura Petal Background -->
-<style>
-  #sakura-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    z-index: -1;
-    pointer-events: none;
-  }
-</style>
+    <iframe id="sakura-background" src="components/background.html"></iframe>
 
-<iframe id="sakura-background" src="components/background.html"></iframe>
+    <body>
+        <div id="wedding_profile">
+            <h1>Wedding Profile</h1>
+        </div>
 
-<body>
-    <div id="wedding_profile">
-        <h1>Wedding Profile</h1>
-    </div>
-
-    <div id="img_first">
-        <img src="./assets/1.jpg" alt="画像1">
-        <img src="./assets/2.jpg" alt="画像2">
-        <img src="./assets/3.jpg" alt="画像3">
-    </div>
-    <div id=greeting><br><br>
-        <p>本日はご多用の中<br>
-            私たちの結婚式へご出席いただき<br>
-            誠にありがとうございます<br><br>
-
-            この日を迎えられましたのも<br>
-            温かく見守ってくださった<br>
-            みなさんのおかげと感謝しております。<br><br>
-
-            少しの時間ではありますが、<br>
-            本日はゆっくりとおくつろぎいただき、<br>
-            楽しんでいただけますと<br>
-            幸いです。<br><br><br>
-        </p>
-    </div>
-
-    <div id="Profile">
-        <h1>Profile</h1>
-    </div>
-    <div id="profile">
-        <div id="groom">groom
-            <div id="img_groom">
-                <img src="./assets/man.jpg" alt="男の子">
+        <div id="img_first">
+            <div id="img_first_grid">
+                <img class="item1" src="./assets/cool.jpg" alt="画像1" />
+                <img class="item2" src="./assets/seiza.jpg" alt="画像2" />
+                <img class="item3" src="./assets/japanese.jpg" alt="画像3" />
             </div>
-            <p>すけたろう<br>
-                xxxx.xx.xx<br>
-                xx型<br>
-                AAAA<br>
-                AAAA<br>
-                AAAA<br>
+        </div>
+        <div id="greeting">
+            <br /><br />
+            <p>
+                本日はご多用の中<br />
+                私たちの結婚式へご出席いただき<br />
+                誠にありがとうございます<br /><br />
+
+                この日を迎えられましたのも<br />
+                温かく見守ってくださった<br />
+                みなさんのおかげと感謝しております。<br /><br />
+
+                少しの時間ではありますが、<br />
+                本日はゆっくりとおくつろぎいただき、<br />
+                楽しんでいただけますと<br />
+                幸いです。<br /><br /><br />
             </p>
         </div>
 
-        <div id="bride">bride
-            <div id="img_bride">
-                <img src="./assets/woman.jpg" alt="女の子">
-            </div>
-            <p>ひらめ<br>
-                xxxx.xx.xx<br>
-                xx型<br>
-                BBBB<br>
-                BBBB<br>
-                BBBB<br>
-            </p>
+        <div id="Profile">
+            <h1>Profile</h1>
         </div>
-    </div>
+        <div id="profile">
+            <div id="groom">
+                groom
+                <div id="img_groom">
+                    <img src="./assets/rs.jpg" alt="男の子" />
+                </div>
+                <p>
+                    Ryosuke<br />
+                    1996.08.25<br />
+                    B型<br />
+                    乙女座<br />
+                </p>
+            </div>
 
-    <div id="first_impression1">
-        <h3>相手の第一印象</h3>
-        <p>
-            S→Y：<br>
-            Y→S：優しくて穏やか、温かな雰囲気の印象<br>
-        </p>
-    </div>
-    <div id="first_impression2">
-        <h3>相手の尊敬できるところ</h3>
-        <p>あああ</p>
-    </div>
-    <div id="first_impression3">
-        <h3>相手の●●なところ</h3>
-        <p>いいい</p>
-    </div>
-    <div id="first_impression4">
-        <h3>相手の●●●</h3>
-        <p>ううう</p>
-    </div>
-    <div id="first_impression5">
-        <h3>相手の●●●</h3>
-        <p>えええ</p>
-    </div>
+            <div id="bride">
+                bride
+                <div id="img_bride">
+                    <img src="./assets/ys.jpg" alt="女の子" />
+                </div>
+                <p>
+                    Yumika<br />
+                    1996.10.28<br />
+                    O型<br />
+                    蠍座<br />
+                </p>
+            </div>
+        </div>
 
-    <div id="drink">
-        <h1>Drink menu</h1>
-        <p>
-            オレンジジュース<br>
-            パインジュース<br>
-            マンゴージュース<br>
-            水<br>
-            烏龍茶<br>
-        </p>
-    </div>
+        <div id="impression">
+            <div id="first_impression">
+                <h3>相手の第一印象</h3>
+                <p>
+                    <br />
+                    🤵🏻：<br />
+                    <br />
+                    👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                </p>
+            </div>
+            <div id="first_impression">
+                <h3>相手の尊敬できるところ</h3>
+                <p>
+                    <br />
+                    🤵🏻：<br />
+                    <br />
+                    👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                </p>
+            </div>
+            <div id="first_impression">
+                <h3>相手の●●なところ</h3>
+                <p>
+                    <br />
+                    🤵🏻：<br />
+                    <br />
+                    👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                </p>
+            </div>
+            <div id="first_impression">
+                <h3>相手の●●●</h3>
+                <p>
+                    <br />
+                    🤵🏻：<br />
+                    <br />
+                    👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                </p>
+            </div>
+            <div id="first_impression">
+                <h3>相手の●●●</h3>
+                <p>
+                    <br />
+                    🤵🏻：<br />
+                    <br />
+                    👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                </p>
+            </div>
+            <div id="first_impression">
+                <h3>相手の●●●</h3>
+                <p>
+                    <br />
+                    🤵🏻：<br />
+                    <br />
+                    👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                </p>
+            </div>
+        </div>
 
-    <div id="food">
-        <h1>Food menu</h1>
-        <p>
-            前菜<br>
-            マッシュルームスープ<br>
-            お肉<br>
-            お魚<br>
-            デザート<br>
-        </p>
-    </div>
+        <div id="guest_seat">
+            <h1>Guest seat</h1>
+            <p></p>
+        </div>
 
-    <div id="guest_seat">
-        <h1>Guest seat</h1>
-        <p>
-        </p>
-    </div>
+        <div id="photo">
+            <h1>Photo library</h1>
 
-    <div id="photo_library">
-        <h1>Photo library</h1>
-    </div>
+            <div id="img_photo_library">
+                <img src="./assets/a.jpg" alt="画像a" />
+                <img src="./assets/i.jpg" alt="画像i" />
+                <img src="./assets/u.jpg" alt="画像u" />
+                <img src="./assets/e.jpg" alt="画像e" />
+            </div>
 
-    <div id="img_photo_library">
-        <h3>our photos</h3>
-        <img src="./assets/a.jpg" alt="画像a">
-        <img src="./assets/i.jpg" alt="画像i">
-        <img src="./assets/u.jpg" alt="画像u">
-        <img src="./assets/e.jpg" alt="画像e">
-        <img src="./assets/o.jpg" alt="画像o">
-
-        <h3>friends photos</h3>
-        <img src="./assets/a.jpg" alt="画像a">
-        <img src="./assets/i.jpg" alt="画像i">
-        <img src="./assets/u.jpg" alt="画像u">
-        <img src="./assets/e.jpg" alt="画像e">
-        <img src="./assets/o.jpg" alt="画像o">
-    </div>
-</body>
-
+            <div id="img_photo_library">
+                <img src="./assets/a.jpg" alt="画像a" />
+                <img src="./assets/i.jpg" alt="画像i" />
+                <img src="./assets/u.jpg" alt="画像u" />
+                <img src="./assets/e.jpg" alt="画像e" />
+            </div>
+        </div>
+    </body>
 </html>
