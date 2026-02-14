@@ -10,6 +10,13 @@
     box-sizing: border-box;
 }
 
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden; /* 横スクロール防止 */
+}
+
 body {
     margin-top: var(--header-height);
     background-color: beige;
@@ -187,7 +194,7 @@ nav ul li a {
     border-radius: 10px;
 }
 
-/***title***/
+/***guest_seat***/
 #guest_seat h1 {
     text-align: left; /*テキスト左揃え*/
     font-family: "Pacifico", cursive; /*筆記体*/
@@ -195,6 +202,63 @@ nav ul li a {
     padding-bottom: 0.1px; /*下線と文字の間に余白*/
     margin-bottom: 15px; /*見出しの下の余白*/
     font-size: 100; /*文字のサイズ*/
+}
+
+#guest_seat {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.hall {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr;
+    gap: 60px;
+}
+
+/* 高砂 */
+.main-table {
+    grid-column: 1 / 4;
+    background: #eee;
+    padding: 30px;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* 左下 */
+.left-area {
+    grid-column: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* 中央下 */
+.center-area {
+    grid-column: 2;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* 右下 */
+.right-area {
+    grid-column: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* テーブルデザイン */
+.table {
+    width: 100%;
+    height: 100%;
+    background: #f6f29d;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 }
 
 #photo h1 {
