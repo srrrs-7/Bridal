@@ -11,9 +11,21 @@
 }
 
 body {
-    margin-top: var(--header-height); /* ヘッダーの高さ分だけ上に余白を作る */
-    padding: 0;
+    margin-top: var(--header-height);
     background-color: beige;
+}
+
+body.loaded {
+    filter: blur(0);
+}
+
+#blur-container {
+    filter: blur(10px);
+    transition: filter 3s ease;
+}
+
+#blur-container.loaded {
+    filter: blur(0);
 }
 
 /***header***/
@@ -168,7 +180,7 @@ nav ul li a {
 
 /***first_impression***/
 #first_impression {
-    width: 180px;
+    width: 220px;
     height: 200px;
     padding: 10px;
     background: rgba(255, 255, 255, 0.5);
