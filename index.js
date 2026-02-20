@@ -137,11 +137,15 @@ function initScrollAnimations() {
   document.querySelectorAll(".story-row.reverse .story-img").forEach(el => el.classList.add("slide-right"));
   document.querySelectorAll(".story-row.reverse .story-msg").forEach(el => el.classList.add("slide-left"));
 
+  // Profile カード: groom は左から、bride は右からフェードイン
+  const groom = document.querySelector("#groom");
+  const bride = document.querySelector("#bride");
+  if (groom) groom.classList.add("slide-left");
+  if (bride) bride.classList.add("slide-right");
+
   // その他のセクション要素は下からフェードアップ
   const fadeTargets = [
     "#greeting",
-    "#groom",
-    "#bride",
     ".impression-card",
     ".main-table",
     ".table",
