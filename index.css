@@ -56,7 +56,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0 80px;
     z-index: 100;
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(8px);
@@ -65,6 +64,7 @@ header {
     height: var(--header-height);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 nav ul {
@@ -147,51 +147,93 @@ nav ul li a:hover::after {
     margin-top: 1.8em;
 }
 
-/****最初の三枚の写真***/
+/****最初の三枚の写真（扇形→横並び）***/
+/* カード1枚の幅: 180px、gap: 16px → 3枚幅: 180*3 + 16*2 = 572px */
 #img_first {
-    perspective: 700px;
-    padding: 20px 40px;
+    padding: 20px 40px 40px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
 
-#img_first_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    transform-style: preserve-3d;
-    animation: rotateLeft 20s linear infinite;
+/* 扇形展開中だけスクロール許可 */
+#img_first.fan-spreading {
+    overflow-x: auto;
 }
 
-.item1,
-.item3 {
+#img_first::-webkit-scrollbar {
+    display: none;
+}
+
+#img_fan {
+    position: relative;
+    width: 200px;
+    height: 280px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                margin 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.fan-card {
+    position: absolute;
+    width: 180px;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.15),
+        0 20px 40px rgba(0, 0, 0, 0.1);
+    transform-origin: bottom center;
+    transform: rotate(0deg);
+    transition:
+        transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+        left 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        top 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.4s ease;
+    cursor: pointer;
+    left: 0;
+    top: 0;
+}
+
+.fan-card img {
     width: 100%;
     height: 100%;
-    border-radius: 16px;
     object-fit: cover;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    display: block;
+    pointer-events: none;
 }
 
-.item2 {
-    width: 150px;
-    height: 150px;
-    border-radius: 16px;
-    object-fit: cover;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+/* 展開前のz-index（重なり順：中央が一番上） */
+.fan-1 { z-index: 1; }
+.fan-2 { z-index: 3; }
+.fan-3 { z-index: 2; }
+
+/* Phase 1: 扇形展開（3枚: -22, 0, +22 deg）
+   margin-left は JS で動的に設定 */
+#img_fan.spread .fan-1 { transform: rotate(-22deg) translateY(-12px); transition-delay: 0s; }
+#img_fan.spread .fan-2 { transform: rotate(0deg)   translateY(-20px); transition-delay: 0.1s; }
+#img_fan.spread .fan-3 { transform: rotate(22deg)  translateY(-12px); transition-delay: 0.05s; }
+
+/* Phase 2: 横並び（カード幅180 + gap16 = 196px刻み） */
+#img_fan.lined {
+    width: 572px;
+    height: 280px;
+    margin-left: 0;
 }
 
-@keyframes rotateLeft {
-    from { transform: rotateX(15deg) rotateY(0deg); }
-    to   { transform: rotateX(15deg) rotateY(-360deg); }
-}
+#img_fan.lined .fan-1 { transform: rotate(0deg); left: 0px;   top: 0; z-index: 1; transition-delay: 0s; }
+#img_fan.lined .fan-2 { transform: rotate(0deg); left: 196px; top: 0; z-index: 2; transition-delay: 0.06s; }
+#img_fan.lined .fan-3 { transform: rotate(0deg); left: 392px; top: 0; z-index: 3; transition-delay: 0.12s; }
 
-.item1,
-.item2,
-.item3 {
-    animation: cancelRotation 20s linear infinite;
-}
-
-@keyframes cancelRotation {
-    from { transform: rotateY(0deg); }
-    to   { transform: rotateY(360deg); }
+/* ホバーで浮く（横並び時） */
+#img_fan.lined .fan-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow:
+        0 16px 36px rgba(0, 0, 0, 0.2),
+        0 32px 56px rgba(0, 0, 0, 0.14);
+    z-index: 10 !important;
+    transition-delay: 0s !important;
 }
 
 /***Profile***/
@@ -589,18 +631,31 @@ nav ul li a:hover::after {
 
     /* img_first */
     #img_first {
-        padding: 12px 20px;
+        padding: 12px 20px 32px;
+        overflow-x: hidden;
     }
 
-    #img_first_grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+    #img_fan {
+        width: 150px;
+        height: 210px;
     }
 
-    .item2 {
-        width: 100%;
-        height: 100%;
+    /* margin-left は JS で動的に設定 */
+
+    .fan-card {
+        width: 130px;
+        height: 190px;
     }
+
+    /* モバイル横並び: 130 + 12gap = 142px刻み × 3枚 = 414px */
+    #img_fan.lined {
+        width: 414px;
+        height: 210px;
+    }
+
+    #img_fan.lined .fan-1 { left: 0px; }
+    #img_fan.lined .fan-2 { left: 142px; }
+    #img_fan.lined .fan-3 { left: 284px; }
 
     /* greeting */
     #greeting {
