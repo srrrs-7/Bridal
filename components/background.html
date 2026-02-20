@@ -26,7 +26,7 @@
   </style>
 </head>
 <body>
-  <canvas id="canvas"></canvas>
+  <canvas id="canvas">お使いのブラウザはCanvasに対応していません</canvas>
   
   <script>
     const canvas = document.getElementById('canvas');
@@ -170,7 +170,11 @@
     
     animate();
     
-    window.addEventListener('resize', resizeCanvas);
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(resizeCanvas, 150);
+    });
   </script>
 </body>
 </html>

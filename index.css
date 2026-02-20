@@ -19,6 +19,7 @@ body {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -30,11 +31,61 @@ body {
 
 #blur-container {
     filter: blur(10px);
-    transition: filter 3s ease;
+    transition: filter 6s ease;
 }
 
 #blur-container.loaded {
     filter: blur(0);
+}
+
+/***Welcome overlay***/
+#welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 1.6s ease;
+    background: rgba(245, 239, 230, 0.55);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+#welcome-overlay.hidden {
+    opacity: 0;
+}
+
+#welcome-text {
+    font-family: "Pacifico", cursive;
+    font-size: clamp(3.2rem, 12vw, 7rem);
+    color: #c47c8a;
+    letter-spacing: 0.2em;
+    text-shadow:
+        0 2px 32px rgba(196, 124, 138, 0.6),
+        0 0 80px rgba(220, 160, 160, 0.45),
+        0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: welcome-pulse 3s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes welcome-pulse {
+    0%, 100% { opacity: 0.85; transform: scale(1);     }
+    50%       { opacity: 1;    transform: scale(1.03);  }
+}
+
+/***sakura background***/
+#sakura-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    z-index: -1;
+    pointer-events: none;
 }
 
 /***header***/
@@ -43,7 +94,6 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 0 80px;
     z-index: 100;
     background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(8px);
@@ -52,13 +102,15 @@ header {
     height: var(--header-height);
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 nav ul {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     list-style: none;
+    gap: 48px;
     width: 100%;
 }
 
@@ -68,11 +120,30 @@ nav ul li a {
     font-weight: bold;
     font-size: 15px;
     letter-spacing: 0.08em;
+    padding: 4px 0;
+    position: relative;
     transition: color 0.3s;
+}
+
+/* ホバー・アクティブ時の下線アニメーション */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: #c47c8a;
+    border-radius: 2px;
+    transition: width 0.3s ease;
 }
 
 nav ul li a:hover {
     color: #c47c8a;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
 }
 
 /***section heading (共通)***/
@@ -110,59 +181,64 @@ nav ul li a:hover {
     box-shadow: 0 4px 20px rgba(200, 150, 150, 0.15);
 }
 
-/****最初の三枚の写真***/
+#greeting .greeting-para {
+    margin-top: 1.8em;
+}
+
+/****最初の三枚の写真（横並び）***/
 #img_first {
-    perspective: 700px;
-    padding: 20px 40px;
+    padding: 20px 40px 40px;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    scrollbar-width: none;
 }
 
-#img_first_grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    transform-style: preserve-3d;
-    animation: rotateLeft 20s linear infinite;
+#img_first::-webkit-scrollbar {
+    display: none;
 }
 
-.item1,
-.item3 {
+#img_fan {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+}
+
+.fan-card {
+    width: 180px;
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.15),
+        0 20px 40px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    flex-shrink: 0;
+}
+
+.fan-card img {
     width: 100%;
     height: 100%;
-    border-radius: 16px;
     object-fit: cover;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    display: block;
+    pointer-events: none;
 }
 
-.item2 {
-    width: 150px;
-    height: 150px;
-    border-radius: 16px;
-    object-fit: cover;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-@keyframes rotateLeft {
-    from { transform: rotateX(15deg) rotateY(0deg); }
-    to   { transform: rotateX(15deg) rotateY(-360deg); }
-}
-
-.item1,
-.item2,
-.item3 {
-    animation: cancelRotation 20s linear infinite;
-}
-
-@keyframes cancelRotation {
-    from { transform: rotateY(0deg); }
-    to   { transform: rotateY(360deg); }
+/* ホバーで浮く */
+.fan-card:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 16px 36px rgba(0, 0, 0, 0.2),
+        0 32px 56px rgba(0, 0, 0, 0.14);
 }
 
 /***Profile***/
-#Profile {
+#profile-heading {
     padding: 60px 40px 0;
 }
 
-#Profile h1 {
+#profile-heading h1 {
     font-family: "Pacifico", cursive;
     font-size: 2.5rem;
     color: var(--text-brown);
@@ -176,52 +252,103 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 24px;
     padding: 20px 40px 40px;
+    perspective: 1000px;
 }
 
 #groom,
 #bride {
-    flex: 1;
+    flex: 0 0 220px;
     text-align: center;
     background: var(--card-bg);
     border-radius: 20px;
-    padding: 32px 20px;
-    box-shadow: 0 4px 20px rgba(200, 150, 150, 0.15);
+    padding: 20px 16px;
+    box-shadow:
+        0 2px 4px rgba(160, 100, 100, 0.08),
+        0 8px 20px rgba(160, 100, 100, 0.12),
+        0 20px 40px rgba(160, 100, 100, 0.1);
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* スクロールアニメーション（slide-left/right）はゆっくり上書き */
+#groom.slide-left,
+#bride.slide-right {
+    transition: opacity 8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#groom.slide-left.visible,
+#bride.slide-right.visible {
+    transition: opacity 8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#groom.tilt-active,
+#bride.tilt-active {
+    will-change: transform;
+    box-shadow:
+        0 6px 12px rgba(160, 100, 100, 0.12),
+        0 20px 40px rgba(160, 100, 100, 0.2),
+        0 40px 64px rgba(160, 100, 100, 0.14);
 }
 
 #img_groom img,
 #img_bride img {
-    width: 150px;
-    height: 150px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 15%;
     border: 3px solid rgba(210, 160, 160, 0.6);
-    box-shadow: 0 0 0 6px rgba(220, 160, 160, 0.15);
-    margin-bottom: 16px;
+    box-shadow:
+        0 0 0 6px rgba(220, 160, 160, 0.15),
+        0 8px 20px rgba(120, 60, 60, 0.25),
+        0 2px 6px rgba(120, 60, 60, 0.15);
+    margin-bottom: 12px;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#img_groom img:hover,
+#img_bride img:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow:
+        0 0 0 6px rgba(220, 160, 160, 0.2),
+        0 18px 36px rgba(120, 60, 60, 0.3),
+        0 6px 12px rgba(120, 60, 60, 0.2);
 }
 
 #groom p,
 #bride p {
-    line-height: 2;
-    font-size: 0.95rem;
+    line-height: 1.9;
+    font-size: 0.85rem;
 }
 
 #impression {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     gap: 16px;
     padding: 0 40px 60px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+#impression::-webkit-scrollbar {
+    display: none;
 }
 
 .impression-card {
+    flex: 0 0 260px;
     padding: 20px;
     background: var(--card-bg);
     border-radius: 16px;
     box-shadow: 0 2px 12px rgba(200, 150, 150, 0.12);
     transition: background 0.3s ease, box-shadow 0.3s ease;
     min-height: 160px;
+    scroll-snap-align: start;
 }
 
 .impression-card:hover {
@@ -241,6 +368,30 @@ nav ul li a:hover {
 .impression-card p {
     line-height: 2;
     font-size: 0.9rem;
+}
+
+/**impression dots**/
+#impression-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 40px 40px;
+}
+
+.impression-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(196, 124, 138, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 0;
+}
+
+.impression-dot.active {
+    background: #c47c8a;
+    transform: scale(1.3);
 }
 
 /***guest_seat***/
@@ -342,7 +493,7 @@ nav ul li a:hover {
     display: grid;
     grid-template-columns: 3fr 2fr;
     gap: 32px;
-    align-items: center;
+    align-items: start;
 }
 
 /* reverseクラスで img(右) + msg(左) */
@@ -359,6 +510,23 @@ nav ul li a:hover {
     text-align: right;
 }
 
+/* 画像ラッパー */
+.story-img {
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    border-radius: 16px;
+}
+
+.story-img.tilt-active {
+    will-change: transform;
+}
+
+.story-img.tilt-active img {
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.2),
+        0 24px 48px rgba(0, 0, 0, 0.14);
+}
+
 /* 画像 */
 .story-img img {
     width: 100%;
@@ -366,24 +534,35 @@ nav ul li a:hover {
     aspect-ratio: 4 / 3;
     object-fit: cover;
     border-radius: 16px;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-}
-
-.story-img img:hover {
-    transform: scale(1.02);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.1),
+        0 10px 24px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.15s ease;
+    display: block;
 }
 
 /* テキストカード */
 .story-msg {
     background: var(--card-bg);
     border-radius: 20px;
-    padding: 28px 24px;
-    box-shadow: 0 4px 16px rgba(200, 150, 150, 0.13);
+    padding: 20px 20px;
+    box-shadow:
+        0 2px 4px rgba(160, 100, 100, 0.07),
+        0 6px 16px rgba(160, 100, 100, 0.11),
+        0 16px 32px rgba(160, 100, 100, 0.09);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 6px;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.story-msg.tilt-active {
+    will-change: transform;
+    box-shadow:
+        0 4px 8px rgba(160, 100, 100, 0.1),
+        0 14px 28px rgba(160, 100, 100, 0.18),
+        0 28px 48px rgba(160, 100, 100, 0.12);
 }
 
 .story-date {
@@ -401,6 +580,177 @@ nav ul li a:hover {
 
 .story-msg p {
     font-size: 0.92rem;
-    line-height: 1.9;
+    line-height: 1.7;
     color: #7a5a4e;
+}
+
+/***Scroll animations***/
+.fade-up {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: opacity 5s cubic-bezier(0.22, 1, 0.36, 1), transform 5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: opacity 5s cubic-bezier(0.22, 1, 0.36, 1), transform 5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: opacity 5s cubic-bezier(0.22, 1, 0.36, 1), transform 5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/***Responsive (mobile first: ~768px)***/
+@media (max-width: 768px) {
+
+    /* header */
+    header {
+        padding: 0 20px;
+    }
+
+    nav ul {
+        gap: 24px;
+    }
+
+    nav ul li a {
+        font-size: 13px;
+    }
+
+    /* Wedding Profile */
+    #wedding_profile {
+        padding: 40px 20px 16px;
+    }
+
+    /* img_first */
+    #img_first {
+        padding: 12px 20px 32px;
+        overflow-x: auto;
+    }
+
+    #img_fan {
+        gap: 12px;
+    }
+
+    .fan-card {
+        width: 130px;
+        height: 190px;
+    }
+
+    /* greeting */
+    #greeting {
+        padding: 28px 16px 40px;
+        margin: 0 20px;
+        font-size: 0.9rem;
+    }
+
+    /* profile heading */
+    #profile-heading {
+        padding: 40px 20px 0;
+    }
+
+    /* profile cards */
+    #profile {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 20px 32px;
+    }
+
+    #groom,
+    #bride {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* impression */
+    #impression {
+        padding: 0 20px 40px;
+    }
+
+    .impression-card {
+        flex: 0 0 220px;
+    }
+
+    /* guest seat */
+    #guest_seat {
+        padding: 40px 20px;
+    }
+
+    .hall {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 16px;
+    }
+
+    .main-table {
+        grid-column: 1;
+    }
+
+    .left-area {
+        grid-column: 1;
+    }
+
+    .center-area {
+        grid-column: 1;
+        flex-direction: column;
+    }
+
+    .right-area {
+        grid-column: 1;
+    }
+
+    /* Our Story */
+    #photo {
+        padding: 40px 20px;
+    }
+
+    #photo h1 {
+        margin-bottom: 32px;
+    }
+
+    .story-list {
+        gap: 32px;
+    }
+
+    .story-row,
+    .story-row.reverse {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .story-row.reverse .story-img {
+        order: 0;
+    }
+
+    .story-row.reverse .story-msg {
+        order: 0;
+        text-align: left;
+    }
+
+    /* section headings */
+    #wedding_profile h1,
+    #profile-heading h1,
+    #guest_seat h1,
+    #photo h1 {
+        font-size: 2rem;
+    }
 }
