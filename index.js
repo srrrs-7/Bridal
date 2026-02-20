@@ -29,6 +29,45 @@ applyTilt("#groom, #bride", 10);
 applyTilt(".story-msg", 6);
 applyTilt(".story-img", 8);
 
+// impression carousel dots
+function initImpressionDots() {
+  const carousel = document.getElementById("impression");
+  const dotsContainer = document.getElementById("impression-dots");
+  if (!carousel || !dotsContainer) return;
+
+  const cards = carousel.querySelectorAll(".impression-card");
+  if (cards.length === 0) return;
+
+  // build dots
+  cards.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = "impression-dot" + (i === 0 ? " active" : "");
+    dot.setAttribute("aria-label", `スライド ${i + 1}`);
+    dot.addEventListener("click", () => {
+      cards[i].scrollIntoView({ behavior: "smooth", block: "nearest", inline: "start" });
+    });
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll(".impression-dot");
+
+  // update active dot based on which card is most visible
+  const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+        const index = Array.from(cards).indexOf(entry.target);
+        if (index !== -1) {
+          dots.forEach((d, i) => d.classList.toggle("active", i === index));
+        }
+      }
+    });
+  }, { root: carousel, threshold: 0.5 });
+
+  cards.forEach(card => cardObserver.observe(card));
+}
+
+window.addEventListener("load", initImpressionDots);
+
 // スクロールアニメーション
 function initScrollAnimations() {
   // Our Story: 奇数行（img左）の img は左から、msg は右から

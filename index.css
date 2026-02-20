@@ -318,6 +318,30 @@ nav ul li a:hover::after {
     font-size: 0.9rem;
 }
 
+/**impression dots**/
+#impression-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 40px 40px;
+}
+
+.impression-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(196, 124, 138, 0.3);
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    padding: 0;
+}
+
+.impression-dot.active {
+    background: #c47c8a;
+    transform: scale(1.3);
+}
+
 /***guest_seat***/
 #guest_seat {
     padding: 60px 40px;
