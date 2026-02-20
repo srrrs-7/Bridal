@@ -577,8 +577,8 @@ nav ul li a:hover::after {
 /***Scroll animations***/
 .fade-up {
     opacity: 0;
-    transform: translateY(60px);
-    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(80px);
+    transition: opacity 5s cubic-bezier(0.22, 1, 0.36, 1), transform 5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .fade-up.visible {
@@ -588,8 +588,8 @@ nav ul li a:hover::after {
 
 .slide-left {
     opacity: 0;
-    transform: translateX(-80px);
-    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateX(-100px);
+    transition: opacity 5s cubic-bezier(0.22, 1, 0.36, 1), transform 5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .slide-left.visible {
@@ -599,8 +599,8 @@ nav ul li a:hover::after {
 
 .slide-right {
     opacity: 0;
-    transform: translateX(80px);
-    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateX(100px);
+    transition: opacity 5s cubic-bezier(0.22, 1, 0.36, 1), transform 5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .slide-right.visible {
