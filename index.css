@@ -275,6 +275,19 @@ nav ul li a:hover::after {
     transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+/* スクロールアニメーション（slide-left/right）はゆっくり上書き */
+#groom.slide-left,
+#bride.slide-right {
+    transition: opacity 8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#groom.slide-left.visible,
+#bride.slide-right.visible {
+    transition: opacity 8s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 #groom.tilt-active,
 #bride.tilt-active {
     will-change: transform;
