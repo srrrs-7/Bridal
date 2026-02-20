@@ -1,44 +1,35 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>bridal site</title>
         <link rel="stylesheet" href="index.css" />
         <link
-            href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Pacifico&family=Noto+Serif+JP:wght@300;400;700&display=swap"
             rel="stylesheet"
         />
-        <script src="index.js"></script>
+        <script src="index.js" defer></script>
     </head>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#profile">Profile</a></li>
-                <li><a href="#guest_seat">Guest seat</a></li>
-                <li><a href="#photo">Photo</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Sakura Petal Background -->
-    <style>
-        #sakura-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-            z-index: -1;
-            pointer-events: none;
-        }
-    </style>
-
-    <iframe id="sakura-background" src="components/background.html"></iframe>
-
     <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#guest_seat">Guest seat</a></li>
+                    <li><a href="#photo">Our Story</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Sakura Petal Background -->
+        <iframe
+            id="sakura-background"
+            src="components/background.html"
+            title="桜の花びらアニメーション背景"
+        ></iframe>
+
         <div id="blur-container">
             <div id="wedding_profile">
                 <h1>Wedding Profile</h1>
@@ -46,41 +37,39 @@
 
             <div id="img_first">
                 <div id="img_first_grid">
-                    <img class="item1" src="./assets/cool.webp" alt="画像1" />
-                    <img class="item2" src="./assets/seiza.webp" alt="画像2" />
-                    <img
-                        class="item3"
-                        src="./assets/japanese.webp"
-                        alt="画像3"
-                    />
+                    <img class="item1" src="./assets/cool.webp" alt="新郎新婦の写真1" />
+                    <img class="item2" src="./assets/seiza.webp" alt="新郎新婦の写真2" />
+                    <img class="item3" src="./assets/japanese.webp" alt="新郎新婦の写真3" />
                 </div>
             </div>
+
             <div id="greeting">
-                <br /><br />
                 <p>
                     本日はご多用の中<br />
                     私たちの結婚式へご出席いただき<br />
-                    誠にありがとうございます<br /><br />
-
+                    誠にありがとうございます
+                </p>
+                <p class="greeting-para">
                     この日を迎えられましたのも<br />
                     温かく見守ってくださった<br />
-                    みなさんのおかげと感謝しております。<br /><br />
-
+                    みなさんのおかげと感謝しております。
+                </p>
+                <p class="greeting-para">
                     少しの時間ではありますが、<br />
                     本日はゆっくりとおくつろぎいただき、<br />
                     楽しんでいただけますと<br />
-                    幸いです。<br /><br /><br />
+                    幸いです。
                 </p>
             </div>
 
-            <div id="Profile">
+            <div id="profile-heading">
                 <h1>Profile</h1>
             </div>
             <div id="profile">
-                <div id="groom">
+                <article id="groom">
                     groom
                     <div id="img_groom">
-                        <img src="./assets/rs.webp" alt="男の子" />
+                        <img src="./assets/rs.webp" alt="新郎 Ryosuke" />
                     </div>
                     <p>
                         Ryosuke<br />
@@ -88,12 +77,12 @@
                         B型<br />
                         乙女座<br />
                     </p>
-                </div>
+                </article>
 
-                <div id="bride">
+                <article id="bride">
                     bride
                     <div id="img_bride">
-                        <img src="./assets/ys.webp" alt="女の子" />
+                        <img src="./assets/ys.webp" alt="新婦 Yumika" />
                     </div>
                     <p>
                         Yumika<br />
@@ -101,62 +90,56 @@
                         O型<br />
                         蠍座<br />
                     </p>
-                </div>
+                </article>
             </div>
 
             <div id="impression">
-                <div id="first_impression">
+                <div class="impression-card">
                     <h3>相手の第一印象</h3>
                     <p>
-                        <br />
                         🤵🏻：<br />
                         <br />
-                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象
                     </p>
                 </div>
-                <div id="first_impression">
+                <div class="impression-card">
                     <h3>相手の尊敬できるところ</h3>
                     <p>
-                        <br />
                         🤵🏻：<br />
                         <br />
-                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象
                     </p>
                 </div>
-                <div id="first_impression">
+                <div class="impression-card">
                     <h3>相手の●●なところ</h3>
                     <p>
-                        <br />
                         🤵🏻：<br />
                         <br />
-                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象
                     </p>
                 </div>
-                <div id="first_impression">
+                <div class="impression-card">
                     <h3>相手の●●●</h3>
                     <p>
-                        <br />
                         🤵🏻：<br />
                         <br />
-                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象
                     </p>
                 </div>
-                <div id="first_impression">
+                <div class="impression-card">
                     <h3>相手の●●●</h3>
                     <p>
-                        <br />
                         🤵🏻：<br />
                         <br />
-                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象
                     </p>
                 </div>
-                <div id="first_impression">
+                <div class="impression-card">
                     <h3>相手の●●●</h3>
                     <p>
-                        <br />
                         🤵🏻：<br />
                         <br />
-                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象<br />
+                        👰🏻‍♀️：優しくて穏やか、温かな雰囲気の印象
                     </p>
                 </div>
             </div>
@@ -192,104 +175,106 @@
             </section>
 
             <div id="photo">
-                <h1>Photo library</h1>
+                <h1>Our Story</h1>
 
-                <div id="img_photo_library">
-                    <img
-                        loading="lazy"
-                        src="./assets/fire_flower.webp"
-                        alt="画像a"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/autum_fes.webp"
-                        alt="画像i"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/autum_fes_potato.webp"
-                        alt="画像u"
-                    />
-                    <img loading="lazy" src="./assets/conan.webp" alt="画像e" />
-                    <img
-                        loading="lazy"
-                        src="./assets/hakodate_post.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/hakodateyama.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/horse_park.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/humburger.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/hurano_musium.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/kuzyuukuri.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/nanairo.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/okinawa.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/okinawa_mozuku.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/old_house.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/setana.webp"
-                        alt="画像e"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/snow_fes.webp"
-                        alt="画像e"
-                    />
-                </div>
+                <div class="story-list">
 
-                <div id="img_photo_library">
-                    <img
-                        loading="lazy"
-                        src="./assets/disney.webp"
-                        alt="画像a"
-                    />
-                    <img
-                        loading="lazy"
-                        src="./assets/diving.webp"
-                        alt="画像i"
-                    />
-                    <img loading="lazy" src="./assets/ezawa.webp" alt="画像u" />
-                    <img
-                        loading="lazy"
-                        src="./assets/snow_pic.webp"
-                        alt="画像e"
-                    />
+                    <!-- 1: img(左) + msg(右) -->
+                    <div class="story-row">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/fire_flower.webp" alt="花火大会" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>出会い</h3>
+                            <p>●●●●●●●●●●●●●●●●●●●●●●●●</p>
+                        </div>
+                    </div>
+
+                    <!-- 2: msg(左) + img(右) -->
+                    <div class="story-row reverse">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/autum_fes.webp" alt="秋祭り" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>初デート</h3>
+                            <p>●●●●●●●●●●●●●●●●●●●●●●●●</p>
+                        </div>
+                    </div>
+
+                    <!-- 3: img(左) + msg(右) -->
+                    <div class="story-row">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/okinawa.webp" alt="沖縄旅行" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>沖縄旅行</h3>
+                            <p>守礼門の前で。青い空と海に囲まれた、忘れられない二人の旅。</p>
+                        </div>
+                    </div>
+
+                    <!-- 4: msg(左) + img(右) -->
+                    <div class="story-row reverse">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/disney.webp" alt="ディズニーランド" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>ディズニーランド</h3>
+                            <p>おそろいのバケットハットで。童心に返って一日中はしゃいだ特別な日。</p>
+                        </div>
+                    </div>
+
+                    <!-- 5: img(左) + msg(右) -->
+                    <div class="story-row">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/hakodateyama.webp" alt="函館山" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>北海道旅行</h3>
+                            <p>函館山の頂上で。眼下に広がる大パノラマと二人の笑顔が重なった瞬間。</p>
+                        </div>
+                    </div>
+
+                    <!-- 6: msg(左) + img(右) -->
+                    <div class="story-row reverse">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/snow_fes.webp" alt="イルミネーション" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>プロポーズ</h3>
+                            <p>●●●●●●●●●●●●●●●●●●●●●●●●</p>
+                        </div>
+                    </div>
+
+                    <!-- 7: img(左) + msg(右) -->
+                    <div class="story-row">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/diving.webp" alt="ダイビング" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>ダイビング</h3>
+                            <p>手をつないで深海へ。色とりどりの魚たちと泳いだ、二人だけの水中冒険。</p>
+                        </div>
+                    </div>
+
+                    <!-- 8: msg(左) + img(右) -->
+                    <div class="story-row reverse">
+                        <div class="story-img">
+                            <img loading="lazy" src="./assets/snow_pic.webp" alt="雪の中で" />
+                        </div>
+                        <div class="story-msg">
+                            <span class="story-date">●●●●.●●</span>
+                            <h3>そして、今日へ</h3>
+                            <p>雪の中ではしゃいだあの日から、この日を迎えることができました。<br />本日はお越しいただき、ありがとうございます。</p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
