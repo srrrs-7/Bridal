@@ -39,65 +39,6 @@ applyTilt("#groom, #bride", 10);
 applyTilt(".story-msg", 6);
 applyTilt(".story-img", 8);
 
-// 扇形ファン展開 → 横並びアニメーション
-function initFanSpread() {
-  const fan = document.getElementById("img_fan");
-  if (!fan) return;
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Phase 1: 扇形展開
-        // 左カードが rotate(-22deg) で画面外に出ないよう padding を確保しつつ中央に配置
-        const container = document.getElementById("img_first");
-        // 扇形展開中はスクロール許可
-        if (container) container.classList.add("fan-spreading");
-        const cardH = fan.querySelector(".fan-card").offsetHeight || 260;
-        const overhang = Math.ceil(cardH * Math.sin(22 * Math.PI / 180)) + 20;
-        // fan を中央に置くため左右に overhang 分の余白を持たせてコンテナを中央スクロール
-        fan.style.marginLeft = overhang + "px";
-        fan.style.marginRight = overhang + "px";
-        fan.classList.add("spread");
-        // margin 適用後に DOM が更新されてから中央スクロール
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            if (!container) return;
-            const fanRect = fan.getBoundingClientRect();
-            const containerRect = container.getBoundingClientRect();
-            const fanCenterInContainer = (fanRect.left - containerRect.left) + container.scrollLeft + (fan.offsetWidth / 2);
-            container.scrollLeft = fanCenterInContainer - container.clientWidth / 2;
-          });
-        });
-        // Phase 2: 1.1秒後に横並び
-        setTimeout(() => {
-          fan.style.marginLeft = "0";
-          fan.style.marginRight = "0";
-          fan.classList.add("lined");
-          // 横並び完了後（transition: 0.8s + delay 0.24s ≒ 1.1s）に3枚目を中央へ
-          setTimeout(() => {
-            const container = document.getElementById("img_first");
-            const card3 = fan.querySelector(".fan-2"); // 3枚中央は fan-2
-            if (!container || !card3) return;
-            const containerW = container.clientWidth;
-            // getBoundingClientRect で fan 内の実座標を取得
-            const fanRect = fan.getBoundingClientRect();
-            const card3Rect = card3.getBoundingClientRect();
-            const card3LeftInFan = card3Rect.left - fanRect.left;
-            const cardW = card3Rect.width;
-            container.scrollLeft = card3LeftInFan - (containerW / 2) + (cardW / 2);
-            // 横並び＋スクロール完了後にスクロールをロック
-            container.classList.remove("fan-spreading");
-          }, 900);
-        }, 1100);
-        observer.unobserve(fan);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  observer.observe(fan);
-}
-
-window.addEventListener("load", initFanSpread);
 
 // impression carousel dots
 function initImpressionDots() {
