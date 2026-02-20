@@ -31,11 +31,46 @@ body {
 
 #blur-container {
     filter: blur(10px);
-    transition: filter 3s ease;
+    transition: filter 6s ease;
 }
 
 #blur-container.loaded {
     filter: blur(0);
+}
+
+/***Welcome overlay***/
+#welcome-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 1;
+    transition: opacity 1.6s ease;
+}
+
+#welcome-overlay.hidden {
+    opacity: 0;
+}
+
+#welcome-text {
+    font-family: "Pacifico", cursive;
+    font-size: clamp(2.8rem, 10vw, 6rem);
+    color: var(--sakura-pink, rgba(220, 160, 160, 0.9));
+    letter-spacing: 0.18em;
+    text-shadow:
+        0 2px 24px rgba(220, 160, 160, 0.5),
+        0 0 60px rgba(220, 160, 160, 0.35),
+        0 4px 8px rgba(0, 0, 0, 0.08);
+    animation: welcome-pulse 3s ease-in-out infinite;
+    user-select: none;
+}
+
+@keyframes welcome-pulse {
+    0%, 100% { opacity: 0.85; transform: scale(1);     }
+    50%       { opacity: 1;    transform: scale(1.03);  }
 }
 
 /***sakura background***/

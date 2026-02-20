@@ -1,6 +1,16 @@
-// 画面のblur効果を解除する
+// 画面のblur効果を解除する & Welcome オーバーレイをフェードアウト
 window.addEventListener("load", () => {
   document.getElementById("blur-container").classList.add("loaded");
+
+  // blur transition (3s) が終わるタイミングで Welcome をフェードアウト
+  const overlay = document.getElementById("welcome-overlay");
+  if (overlay) {
+    setTimeout(() => {
+      overlay.classList.add("hidden");
+      // フェードアウト完了後に DOM から除去
+      overlay.addEventListener("transitionend", () => overlay.remove(), { once: true });
+    }, 2020); // 2.02s: 扇形→横並び完了タイミング（Phase1: 1.1s + Phase2 transition: 0.92s）
+  }
 });
 
 // 3D tiltエフェクト
