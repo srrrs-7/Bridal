@@ -331,9 +331,11 @@ nav ul li a:hover::after {
     gap: 16px;
     padding: 0 40px;
     overflow-x: auto;
+    overflow-y: hidden;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+    touch-action: pan-x;
 }
 
 #impression::-webkit-scrollbar {
