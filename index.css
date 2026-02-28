@@ -353,9 +353,11 @@ nav ul li a:hover::after {
     scroll-snap-stop: always;
 }
 
-.impression-card:hover {
-    background: rgba(255, 230, 230, 0.65);
-    box-shadow: 0 4px 20px rgba(200, 130, 130, 0.2);
+@media (hover: hover) {
+    .impression-card:hover {
+        background: rgba(255, 230, 230, 0.65);
+        box-shadow: 0 4px 20px rgba(200, 130, 130, 0.2);
+    }
 }
 
 .impression-card h3 {
