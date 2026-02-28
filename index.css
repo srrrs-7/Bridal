@@ -310,6 +310,10 @@ nav ul li a:hover::after {
     transition: transform 0.35s ease, box-shadow 0.35s ease;
 }
 
+#img_bride img {
+    object-position: center 50%;
+}
+
 #img_groom img:hover,
 #img_bride img:hover {
     transform: translateY(-6px) scale(1.04);
