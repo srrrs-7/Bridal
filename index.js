@@ -79,6 +79,21 @@ function initImpressionDots() {
 
 window.addEventListener("load", initImpressionDots);
 
+// impression カードの幅を最大幅に統一する
+function equalizeImpressionCardWidths() {
+  const cards = document.querySelectorAll(".impression-card");
+  if (cards.length === 0) return;
+
+  // いったんリセットして自然な幅を計測
+  cards.forEach(card => { card.style.width = ""; });
+
+  const maxWidth = Math.max(...Array.from(cards).map(card => card.getBoundingClientRect().width));
+
+  cards.forEach(card => { card.style.width = maxWidth + "px"; });
+}
+
+window.addEventListener("load", equalizeImpressionCardWidths);
+
 // スクロールアニメーション
 function initScrollAnimations() {
   // Our Story: 奇数行（img左）の img は左から、msg は右から

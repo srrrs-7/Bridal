@@ -329,7 +329,7 @@ nav ul li a:hover::after {
     display: flex;
     flex-direction: row;
     gap: 16px;
-    padding: 0 40px 60px;
+    padding: 0 40px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -341,13 +341,12 @@ nav ul li a:hover::after {
 }
 
 .impression-card {
-    flex: 0 0 260px;
-    padding: 20px;
+    flex: 0 0 auto;
+    padding: 20px 28px;
     background: var(--card-bg);
     border-radius: 16px;
     box-shadow: 0 2px 12px rgba(200, 150, 150, 0.12);
     transition: background 0.3s ease, box-shadow 0.3s ease;
-    min-height: 160px;
     scroll-snap-align: start;
 }
 
@@ -368,6 +367,7 @@ nav ul li a:hover::after {
 .impression-card p {
     line-height: 2;
     font-size: 0.9rem;
+    white-space: nowrap;
 }
 
 /**impression dots**/
@@ -375,7 +375,7 @@ nav ul li a:hover::after {
     display: flex;
     justify-content: center;
     gap: 8px;
-    padding: 0 40px 40px;
+    padding: 16px 40px 40px;
 }
 
 .impression-dot {
@@ -683,11 +683,7 @@ nav ul li a:hover::after {
 
     /* impression */
     #impression {
-        padding: 0 20px 40px;
-    }
-
-    .impression-card {
-        flex: 0 0 220px;
+        padding: 0 20px;
     }
 
     /* guest seat */
