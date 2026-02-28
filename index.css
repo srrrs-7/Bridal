@@ -348,6 +348,7 @@ nav ul li a:hover::after {
     box-shadow: 0 2px 12px rgba(200, 150, 150, 0.12);
     transition: background 0.3s ease, box-shadow 0.3s ease;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .impression-card:hover {
