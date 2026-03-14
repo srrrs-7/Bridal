@@ -359,7 +359,7 @@ nav ul li a:hover::after {
 }
 
 .impression-card {
-    flex: 0 0 auto;
+    flex: 0 0 calc(100vw - 100px);
     padding: 20px 28px;
     background: var(--card-bg);
     border-radius: 16px;
@@ -367,6 +367,9 @@ nav ul li a:hover::after {
     transition: background 0.3s ease, box-shadow 0.3s ease;
     scroll-snap-align: start;
     scroll-snap-stop: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @media (hover: hover) {

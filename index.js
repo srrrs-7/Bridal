@@ -112,7 +112,6 @@ function initScrollAnimations() {
   // その他のセクション要素は下からフェードアップ
   const fadeTargets = [
     "#greeting",
-    ".impression-card",
     ".main-table",
     ".table",
   ];
