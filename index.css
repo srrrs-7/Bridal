@@ -187,10 +187,11 @@ nav ul li a:hover::after {
 
 /****最初の三枚の写真（横並び）***/
 #img_first {
-    padding: 20px 40px 40px;
+    padding: 20px 0 40px;
     display: flex;
-    justify-content: center;
-    overflow-x: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
 }
 
@@ -200,21 +201,24 @@ nav ul li a:hover::after {
 
 #img_fan {
     display: flex;
-    gap: 16px;
-    justify-content: center;
+    gap: 12px;
+    padding: 0 20px;
 }
 
 .fan-card {
-    width: 180px;
-    height: 260px;
+    width: calc(100vw - 60px);
+    height: auto;
+    aspect-ratio: 16 / 9;
     border-radius: 16px;
     overflow: hidden;
+    background: #e8e0d6;
     box-shadow:
         0 8px 20px rgba(0, 0, 0, 0.15),
         0 20px 40px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: transform 0.4s ease, box-shadow 0.4s ease;
     flex-shrink: 0;
+    scroll-snap-align: center;
 }
 
 .fan-card img {
@@ -223,6 +227,14 @@ nav ul li a:hover::after {
     object-fit: cover;
     display: block;
     pointer-events: none;
+}
+
+.fan-1 img {
+    object-position: center 20%;
+}
+
+.fan-3 img {
+    object-position: center 35%;
 }
 
 /* ホバーで浮く */
@@ -650,17 +662,16 @@ nav ul li a:hover::after {
 
     /* img_first */
     #img_first {
-        padding: 12px 20px 32px;
-        overflow-x: auto;
+        padding: 12px 0 32px;
     }
 
     #img_fan {
-        gap: 12px;
+        padding: 0 16px;
+        gap: 10px;
     }
 
     .fan-card {
-        width: 130px;
-        height: 190px;
+        width: calc(100vw - 48px);
     }
 
     /* greeting */
