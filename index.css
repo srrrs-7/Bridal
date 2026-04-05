@@ -434,11 +434,17 @@ nav ul li a:hover::after {
     margin-bottom: 32px;
 }
 
-.hall {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto 1fr;
-    gap: 40px;
+.hall img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* スマホ */
+@media (max-width: 768px) {
+  .hall img {
+    max-width: 100%; /* 画面幅の90%まで */
+    height: auto;
+  }
 }
 
 .main-table {
